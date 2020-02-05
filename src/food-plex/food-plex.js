@@ -107,8 +107,8 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
         <nav class="tabs-bar" hidden$="{{!wideLayout}}">
           <template is="dom-repeat" items="{{items}}">
           <ul>
-<li><a href="[[rootPath]]{{item.route}}">{{item.label}}</a></li>
-</ul>
+        <li><a href="[[rootPath]]{{item.route}}">{{item.label}}</a></li>
+         </ul>
           </template>
          </nav>
       </app-toolbar>
@@ -118,6 +118,7 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
         <login-form name="login"></login-form>
         <payment-page name="payment"></payment-page>
         <food-order name="order"></food-order>
+        <user-orders name="user-orders"></user-orders>
         <error-view name="error404"></error-view>
       </iron-pages> 
     </app-header>
@@ -140,53 +141,53 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
       items: {
         type: Array,
         value: function () {
-          return [{ label: 'User-Home', route: 'user-home' },{ label: 'Vendor-Home', route: 'vendor-home' },{ label: 'Login', route: 'login' }, { label: 'Payment', route: 'payment' },{ label: 'Order', route: 'order' }]
+          return [{ label: 'User-Home', route: 'user-home' },{ label: 'Vendor-Home', route: 'vendor-home' },{ label: 'Login', route: 'login' }, { label: 'Payment', route: 'payment' },{ label: 'Order', route: 'order' },{ label: 'MyOrders', route: 'user-orders' }]
         }
       }
     };
   }
   connectedCallback()
   {
-// //Carousal effect
+//Carousal effect
     super.connectedCallback();
-//     var num;
-//    var temp=0;
-//    var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
-//    var preloads=[];
-// /* add any number of images here */
-// preload(
-//         '../../images/carousal1.jpg',
-//         '../../images/carousal2.jpg',
-//         '../../images/carousal3.jpg',
-//        );
-// function preload(){
-// for(var c=0;c<arguments.length;c++) {
-//    preloads[preloads.length]=new Image();
-//    preloads[preloads.length-1].src=arguments[c];
-//   }
-//  }
+    var num;
+   var temp=0;
+   var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
+   var preloads=[];
+/* add any number of images here */
+preload(
+        '../../images/carousal1.jpg',
+        '../../images/carousal2.jpg',
+        '../../images/carousal3.jpg',
+       );
+function preload(){
+for(var c=0;c<arguments.length;c++) {
+   preloads[preloads.length]=new Image();
+   preloads[preloads.length-1].src=arguments[c];
+  }
+ }
 
-// function rotateImages() {
-//    num=Math.floor(Math.random()*preloads.length);
-// if(num==temp){
-//    rotateImages();
-//  }
-// else{
-//    document.body.style.backgroundImage='url('+preloads[num].src+')';
-//    temp=num;
+function rotateImages() {
+   num=Math.floor(Math.random()*preloads.length);
+if(num==temp){
+   rotateImages();
+ }
+else{
+   document.body.style.backgroundImage='url('+preloads[num].src+')';
+   temp=num;
 
-// setTimeout(function(){rotateImages()},speed);
-//   }
-//  }
+setTimeout(function(){rotateImages()},speed);
+  }
+ }
 
-// if(window.addEventListener){
-//    window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
-//  }
-// else { 
-// if(window.attachEvent){
-//    window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
-//   }
-//  }
+if(window.addEventListener){
+   window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+ }
+else { 
+if(window.attachEvent){
+   window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
+  }
+ }
   }
   /**
   *simple observer which is triggered when page property is changed
@@ -205,6 +206,8 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
       case 'payment': import('./payment/payment-page.js')
         break;
       case 'order': import('./orders/food-order.js')
+        break;
+        case 'user-orders': import('./orders/user-orders.js')
         break;
       default: import('./error-view.js')
         break;

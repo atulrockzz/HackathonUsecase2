@@ -14,6 +14,7 @@ import '../shared/API/ajax-call.js';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-item.js';
+import '@polymer/paper-card/paper-card.js';
 /**
  * @customElement
  * @polymer
@@ -25,7 +26,21 @@ class VendorHome extends PolymerElement {
         :host {
           display: block;
         }
-        
+        paper-card
+        {
+          width:100%;
+        }
+        paper-card ul
+        {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          list-style:none;
+        }
+        paper-card ul li
+        {
+          width:120px;
+        }
       </style>
       <h2>Hello [[prop1]]!</h2>
       <ajax-call id="ajax"></ajax-call>
@@ -64,11 +79,13 @@ class VendorHome extends PolymerElement {
       </paper-tabs>
       <iron-pages selected="{{selected}}">
           <template is="dom-repeat" items={{availableItems}}>
-            <div name="{{item.category}}">
-            item:{{item.name}}
-            Price:{{item.price}}
-            <paper-icon-button id="deleteBtn" on-click="_handleDelete" icon="delete"></paper-icon-button>
-            </div>
+            <paper-card name="{{item.category}}">
+            <ul>
+            <li>item:{{item.name}}</li>
+            <li>Price:{{item.price}}</li>
+            <li><paper-icon-button id="deleteBtn" on-click="_handleDelete" icon="delete"></paper-icon-button></li>
+            </ul>
+            </paper-card>
           </template>
       </iron-pages>
     `;

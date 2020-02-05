@@ -15,11 +15,26 @@ class FoodOrder extends PolymerElement {
   static get template() {
     return html`
       <style>
-      paper-card{
-        width:400px;
-      }
         :host {
           display: block;
+        }
+        paper-card{
+          width:100%;
+        }
+        paper-card ul
+        {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          list-style:none;
+        }
+        paper-card ul li
+        {
+          width:120px;
+        }
+        paper-tab
+        {
+          font-size:22px;
         }
       </style>
       <h2>Hello [[prop1]]!</h2>
@@ -33,11 +48,12 @@ class FoodOrder extends PolymerElement {
       <iron-pages selected="{{selected}}">
           <template is="dom-repeat" items={{availableItems}}>
             <paper-card>
-            item:{{item.name}}
-            Price:{{item.price}}
-            <paper-icon-button id="removeBtn" on-click="_handleRemove" icon="remove"></paper-icon-button>
+            <ul><li>item:{{item.name}}</li>
+            <li>Price:{{item.price}}</li>
+            <li><paper-icon-button id="removeBtn" on-click="_handleRemove" icon="remove"></paper-icon-button>
             {{quantity}}
-            <paper-icon-button id="addBtn" on-click="_handleAdd" icon="add"></paper-icon-button>
+            <paper-icon-button id="addBtn" on-click="_handleAdd" icon="add"></paper-icon-button></li>
+            </ul>
             </paper-card>
           </template>
       </iron-pages>
@@ -68,19 +84,7 @@ class FoodOrder extends PolymerElement {
       }
     };
   }
-  _filterCategory(event)
-  {
-    console.log(event.model.item.categoryName)
-  }
-  _handleAdd(){
-    this.quantity+=1;
-  }
-  _handleRemove(){
-    if(this.quantity!=0)
-    {
-    this.quantity=this.quantity-1;
-    }
-  }
+
   ready()
   {
     super.ready();
