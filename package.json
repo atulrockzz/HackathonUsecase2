@@ -5,6 +5,7 @@
     "@polymer/app-layout": "^3.1.0",
     "@polymer/app-route": "^3.0.2",
     "@polymer/app-storage": "^3.0.2",
+    "@polymer/font-roboto": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/iron-form": "^3.0.1",
