@@ -149,48 +149,48 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
   connectedCallback()
   {
     super.connectedCallback();
-    var num;
-   var temp=0;
-   var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
-   var preloads=[];
+//     var num;
+//    var temp=0;
+//    var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
+//    var preloads=[];
 
-/* add any number of images here */
+// /* add any number of images here */
 
-preload(
-        'vendor1.jpg',
-        'vendor2.jpg',
-        'vendor3.jpg',
-       );
+// preload(
+//         'vendor1.jpg',
+//         'vendor2.jpg',
+//         'vendor3.jpg',
+//        );
 
-function preload(){
+// function preload(){
 
-for(var c=0;c<arguments.length;c++) {
-   preloads[preloads.length]=new Image();
-   preloads[preloads.length-1].src=arguments[c];
-  }
- }
+// for(var c=0;c<arguments.length;c++) {
+//    preloads[preloads.length]=new Image();
+//    preloads[preloads.length-1].src=arguments[c];
+//   }
+//  }
 
-function rotateImages() {
-   num=Math.floor(Math.random()*preloads.length);
-if(num==temp){
-   rotateImages();
- }
-else{
-   document.body.style.backgroundImage='url('+preloads[num].src+')';
-   temp=num;
+// function rotateImages() {
+//    num=Math.floor(Math.random()*preloads.length);
+// if(num==temp){
+//    rotateImages();
+//  }
+// else{
+//    document.body.style.backgroundImage='url('+preloads[num].src+')';
+//    temp=num;
 
-setTimeout(function(){rotateImages()},speed);
-  }
- }
+// setTimeout(function(){rotateImages()},speed);
+//   }
+//  }
 
-if(window.addEventListener){
-   window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
- }
-else { 
-if(window.attachEvent){
-   window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
-  }
- }
+// if(window.addEventListener){
+//    window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+//  }
+// else { 
+// if(window.attachEvent){
+//    window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
+//   }
+//  }
   }
   /**
   *simple observer which is triggered when page property is changed
