@@ -18,7 +18,7 @@ import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import { setRootPath } from '@polymer/polymer/lib/utils/settings.js';
-
+import '@polymer/font-roboto/roboto.js';
 /**
  * @customElement
  * @polymer
@@ -30,8 +30,11 @@ class FoodPlex extends PolymerElement {
     <style>
     :host {
       display: block;
+      margin:0;
+      padding:0;
+      font-family:"roboto"
     }
-    .wrapper {
+    .tabs-bar {
       background: blueviolet;
       width:100%;
       height: auto;
@@ -66,6 +69,19 @@ class FoodPlex extends PolymerElement {
   {
     color:black;
   }
+  [hidden] {
+    display: none !important;
+  }
+  .heading-title
+  {
+    color:white;
+  }
+  .heading
+  {
+    background: rgb(2,0,36);
+background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgba(0,212,255,1) 98%);
+
+  }
   </style>
   <app-location id="location" route="{{route}}"></app-location>
 <app-route route="{{route}}" data="{{routeData}}" pattern="[[rootPath]]:page" tail="{{subRoute}}"></app-route>
@@ -83,13 +99,13 @@ class FoodPlex extends PolymerElement {
   </app-drawer>
   <app-header-layout has-scrolling-region>
     <app-header class="main-header" slot="header">
-      <app-toolbar>
+      <app-toolbar class="heading">
         <paper-icon-button class="menu-button" icon="menu" drawer-toggle hidden$="{{wideLayout}}">
         </paper-icon-button>
+        <span class="heading-title">Food Plex</span>
       </app-toolbar>
-      <app-toolbar class="tabs-bar" hidden$="{{!wideLayout}}">
         <!-- Nav on desktop: tabs -->
-        <nav class="wrapper">
+        <nav class="tabs-bar" hidden$="{{!wideLayout}}">
           <template is="dom-repeat" items="{{items}}">
           <ul>
 <li><a href="[[rootPath]]{{item.route}}">{{item.label}}</a></li>
@@ -129,7 +145,52 @@ class FoodPlex extends PolymerElement {
         }
       }
     };
+  }
+  connectedCallback()
+  {
+    super.connectedCallback();
+    var num;
+   var temp=0;
+   var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
+   var preloads=[];
 
+/* add any number of images here */
+
+preload(
+        'vendor1.jpg',
+        'vendor2.jpg',
+        'vendor3.jpg',
+       );
+
+function preload(){
+
+for(var c=0;c<arguments.length;c++) {
+   preloads[preloads.length]=new Image();
+   preloads[preloads.length-1].src=arguments[c];
+  }
+ }
+
+function rotateImages() {
+   num=Math.floor(Math.random()*preloads.length);
+if(num==temp){
+   rotateImages();
+ }
+else{
+   document.body.style.backgroundImage='url('+preloads[num].src+')';
+   temp=num;
+
+setTimeout(function(){rotateImages()},speed);
+  }
+ }
+
+if(window.addEventListener){
+   window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+ }
+else { 
+if(window.attachEvent){
+   window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
+  }
+ }
   }
   /**
   *simple observer which is triggered when page property is changed
@@ -147,7 +208,7 @@ class FoodPlex extends PolymerElement {
         break;
       case 'payment': import('./payment/payment-page.js')
         break;
-      case 'order': import('./food-order.js')
+      case 'order': import('./orders/food-order.js')
         break;
       default: import('./error-view.js')
         break;
