@@ -14,29 +14,16 @@ class UserHome extends PolymerElement {
         height:100vh;
         @apply --my-home-theme
       }
-      .card-content {
-        @apply --my-card-content
-      }
-  
       paper-card {
-        max-width: 300px;
+        max-width: 400px;
         margin: 10px;
-  
-        --paper-card-header-image: {
-          height: 200px;
-          background-size: contain;
-        }
+        cursor:pointer;
       }
       </style>
-      <template is="dom-repeat" items={{users}}>
-    <paper-card image="{{_getImage(item.gender,item.image)}}" elevation="2" animated-shadow="false">
+      <template is="dom-repeat" items={{vendors}}>
+    <paper-card image=../../images/carousal2.jpg elevation="2" animated-shadow="false" on-click="_handleClick">
       <div class="card-content">
-        <p>Name: {{item.name}}</p>
-        <p>Gender: {{item.gender}}</p>
-        <p>Age: {{item.age}}</p>
-      </div>
-      <div class="card-actions">
-        <paper-button id="like" raised on-click="_like">{{item.status}}</paper-button>
+        <p>{{item.vendorName}}</p>
       </div>
     </paper-card>
   </template>
@@ -47,8 +34,21 @@ class UserHome extends PolymerElement {
       prop1: {
         type: String,
         value: 'user-home'
+      },
+      vendors:{
+    type:Array,
+    value:[{vendorName:"Snack It"},{vendorName:"Hunger box"},{vendorName:"Faasoos"}]
       }
     };
+  }
+  /**
+   * 
+   * @param {event} event 
+   */
+  _handleClick(event)
+  {
+    console.log(event.model.item)
+    this.set('route.path','./order')
   }
 }
 
