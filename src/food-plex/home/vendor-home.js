@@ -25,6 +25,7 @@ class VendorHome extends PolymerElement {
         :host {
           display: block;
         }
+        
       </style>
       <h2>Hello [[prop1]]!</h2>
       <ajax-call id="ajax"></ajax-call>
@@ -89,6 +90,11 @@ class VendorHome extends PolymerElement {
       }
     };
   }
+  ready()
+  {
+    super.ready();
+    this.addEventListener('populate-fields', (e) => this._populateFields(e))
+  }
   connectedCallback()
   {
     super.connectedCallback();
@@ -103,6 +109,10 @@ class VendorHome extends PolymerElement {
     console.log(event)
     this.$.ajax._makeAjaxCall('get',`http://10.117.189.77:8085/foodplex/vendors`,null,'populateFields')
     this.$.modal.open()
+  }
+  _populateFields(event)
+  {
+    console.log(event.detail)
   }
 }
 

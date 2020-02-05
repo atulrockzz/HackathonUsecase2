@@ -2,14 +2,7 @@
   "entrypoint": "index.html",
   "shell": "src/food-plex/food-plex.js",
   "fragments": [
-    "src/food-plex/home/user-home.js",
-    "src/food-plex/home/vendor-home.js",
-    "src/food-plex/login/login-form.js",
-    "src/food-plex/orders/food-order.js",
-    "src/food-plex/payment/payment-page.js",
-    "src/food-plex/shared/API/ajax-call.js",
-    "src/food-plex/shared/shared-styles.js",
-    "src/food-plex/shared/smart-accordion.js"
+    "src/food-plex/home/user-home.js"
   ],
   "sources": [
    "src/**/*",

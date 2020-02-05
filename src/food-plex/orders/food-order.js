@@ -35,9 +35,9 @@ class FoodOrder extends PolymerElement {
             <paper-card>
             item:{{item.name}}
             Price:{{item.price}}
-            <paper-icon-button id="addBtn" on-click="_handleAdd" icon="add"></paper-icon-button>
-            {{quantity}}
             <paper-icon-button id="removeBtn" on-click="_handleRemove" icon="remove"></paper-icon-button>
+            {{quantity}}
+            <paper-icon-button id="addBtn" on-click="_handleAdd" icon="add"></paper-icon-button>
             </paper-card>
           </template>
       </iron-pages>
