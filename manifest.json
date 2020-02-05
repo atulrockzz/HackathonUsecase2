@@ -1,0 +1,7 @@
+{
+  "name": "food-plex",
+  "short_name": "food-plex",
+  "description": "foodies ",
+  "start_url": "/",
+  "display": "standalone"
+}
