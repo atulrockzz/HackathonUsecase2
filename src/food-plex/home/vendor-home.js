@@ -101,6 +101,7 @@ class VendorHome extends PolymerElement {
   _handleAdd(event)
   {
     console.log(event)
+    this.$.ajax._makeAjaxCall('get',`http://10.117.189.77:8085/foodplex/vendors`,null,'populateFields')
     this.$.modal.open()
   }
 }

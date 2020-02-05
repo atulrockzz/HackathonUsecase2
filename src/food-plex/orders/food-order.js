@@ -60,7 +60,7 @@ class FoodOrder extends PolymerElement {
       },
       availableCategories:{
         type:Array,
-        type:[]
+        value:[{categoryName:"salad"}]
       },
       selected: {
         type: Number,

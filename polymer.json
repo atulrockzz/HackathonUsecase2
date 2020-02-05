@@ -1,7 +1,55 @@
 {
+  "entrypoint": "index.html",
+  "shell": "src/food-plex/food-plex.js",
+  "fragments": [
+    "src/food-plex/home/user-home.js",
+    "src/food-plex/home/vendor-home.js",
+    "src/food-plex/login/login-form.js",
+    "src/food-plex/orders/food-order.js",
+    "src/food-plex/payment/payment-page.js",
+    "src/food-plex/shared/API/ajax-call.js",
+    "src/food-plex/shared/shared-styles.js",
+    "src/food-plex/shared/smart-accordion.js"
+  ],
+  "sources": [
+   "src/**/*",
+   "manifest/**",
+   "package.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "moduleResolution": "node",
   "npm": true,
-  "lint": {
-    "rules": [
+  "builds": [
+    { 
+      "name": "es5prod",
+      "preset": "es5-bundled",
+      "addServiceWorker": true
+    },
+    { 
+      "name": "es6prod",
+      "preset": "es6-unbundled",
+      "addServiceWorker": true
+    },
+    { 
+      "name": "es6-bundled",
+      "preset": "es6-bundled",
+      "addServiceWorker": true
+    },
+    { 
+      "name": "dev",
+      "addServiceWorker": false,
+      "js": {"minify": false, "compile": false},
+      "css": {"minify": false},
+      "html": {"minify": false},
+      "bundle": false,
+      "addPushManifest": false
+    }
+  ],
+  "lint":{
+    "rules":[
       "polymer-3"
     ]
   }
