@@ -80,14 +80,13 @@ class FoodPlex extends PolymerElement {
   {
     background: rgb(2,0,36);
 background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgba(0,212,255,1) 98%);
-
   }
   </style>
   <app-location id="location" route="{{route}}"></app-location>
 <app-route route="{{route}}" data="{{routeData}}" pattern="[[rootPath]]:page" tail="{{subRoute}}"></app-route>
 <app-drawer-layout force-narrow>
   <app-drawer id="drawer" slot="drawer">
-    <app-toolbar></app-toolbar>
+    <app-toolbar>Menu</app-toolbar>
     <!-- Nav on mobile: side nav menu -->
     <paper-listbox selected="[[page]]" attr-for-selected="name">
       <template is="dom-repeat" items="{{items}}">
@@ -148,22 +147,19 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
   }
   connectedCallback()
   {
+// //Carousal effect
     super.connectedCallback();
 //     var num;
 //    var temp=0;
 //    var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
 //    var preloads=[];
-
 // /* add any number of images here */
-
 // preload(
-//         'vendor1.jpg',
-//         'vendor2.jpg',
-//         'vendor3.jpg',
+//         '../../images/carousal1.jpg',
+//         '../../images/carousal2.jpg',
+//         '../../images/carousal3.jpg',
 //        );
-
 // function preload(){
-
 // for(var c=0;c<arguments.length;c++) {
 //    preloads[preloads.length]=new Image();
 //    preloads[preloads.length-1].src=arguments[c];

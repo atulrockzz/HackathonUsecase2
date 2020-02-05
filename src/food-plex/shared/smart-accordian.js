@@ -12,7 +12,8 @@ class SmartAccordion extends PolymerElement {
                 display:inline;
             }
             .accordion {
-                background-color: blueviolet;
+                background: rgb(131,58,180);
+background: linear-gradient(167deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
                 color: white;
                 cursor: pointer;
                 padding: 18px;
