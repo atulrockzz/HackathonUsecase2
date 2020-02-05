@@ -98,13 +98,11 @@ class FoodPlex extends PolymerElement {
          </nav>
       </app-toolbar>
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="error404">
-        <ease-home id="home" name="home"></ease-home>
-        <ease-login name="login"></ease-login>
-        <ease-bookings-confirmed name="confirmed"></ease-bookings-confirmed>
-        <ease-bookings-cancelled name="cancelled"></ease-bookings-cancelled>
-        <ease-book-now name="book"></ease-book-now>
-        <ease-payments name="payments"></ease-payments>
-        <ease-review name="review"></ease-review>
+        <user-home id="home" name="user-home"></user-home>
+        <vendor-home id="home" name="vendor-home"></vendor-home>
+        <login-form name="login"></login-form>
+        <payment-page name="payment"></payment-page>
+        <food-order name="order"></food-order>
         <error-view name="error404"></error-view>
       </iron-pages> 
     </app-header>
@@ -127,7 +125,7 @@ class FoodPlex extends PolymerElement {
       items: {
         type: Array,
         value: function () {
-          return [{ label: 'Home', route: 'home' }, { label: 'Login', route: 'Login' }, { label: 'Payment', route: 'Payment' }]
+          return [{ label: 'User-Home', route: 'user-home' },{ label: 'Vendor-Home', route: 'vendor-home' },{ label: 'Login', route: 'login' }, { label: 'Payment', route: 'payment' },{ label: 'Order', route: 'order' }]
         }
       }
     };
@@ -141,19 +139,15 @@ class FoodPlex extends PolymerElement {
     console.log(newPage)
     //Depending upon the changed page it lazy-imports the url
     switch (newPage) {
-      case 'home': import('./ease-home.js')
+      case 'user-home': import('./home/user-home.js')
         break;
-      case 'login': import('./ease-login.js')
+      case 'vendor-home': import('./home/vendor-home.js')
         break;
-      case 'book': import('./ease-book-now.js')
+      case 'login': import('./login/login-form.js')
         break;
-      case 'payments': import('./ease-payments.js')
+      case 'payment': import('./payment/payment-page.js')
         break;
-      case 'review': import('./ease-review.js')
-        break;
-      case 'confirmed': import('./ease-bookings-confirmed.js')
-        break;
-      case 'cancelled': import('./ease-bookings-cancelled.js')
+      case 'order': import('./food-order.js')
         break;
       default: import('./error-view.js')
         break;
