@@ -1,4 +1,4 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-card/paper-card.js';
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import '../shared/API/ajax-call.js';
@@ -13,8 +13,7 @@ class UserHome extends PolymerElement {
       <style>
       :host {
         display: block;
-        height:100vh;
-        @apply --my-home-theme
+        height:78vh;
       }
       paper-card {
         max-width: 400px;
@@ -39,34 +38,46 @@ class UserHome extends PolymerElement {
         type: String,
         value: 'user-home'
       },
-      vendors:{
-    type:Array,
-    value:[]
+      vendors: {
+        type: Array,
+        value: []
       }
     };
   }
-  ready()
-  {
+  ready() {
     super.ready();
     this.addEventListener('user-data', (e) => this._userData(e))
   }
-  connectedCallback()
-  {
+  connectedCallback() {
     super.connectedCallback();
     // this.$.ajax._makeAjaxCall('get',`http://10.117.189.138:8085/foodplex/users`,null,'userData')  
+    let currentImage = 0;
+    let images = [
+      "url(../../../images/carousal1.jpg)",
+      "url(../../../images/carousal2.jpg)",
+      "url(../../../images/carousal3.jpg)"
+    ];
+    let nextImage = () => {
+      currentImage = (currentImage + 1) % images.length;
+      this.shadowRoot.host.style.background = images[currentImage];
+      this.shadowRoot.host.style.backgroundSize = 'cover';
+      setTimeout(nextImage, 4000)
+    }
+      nextImage();
   }
   /**
    * 
    * @param {event} event 
    */
-  _handleClick(event)
-  {
-    console.log(event.model.item)
-    this.set('route.path','./order')
+  _handleClick(event) {
+    this.set('route.path', './order')
   }
-  _userData(event)
-  {
-this.vendors=event.detail.data;
+  /**
+   * 
+   * @param {*} event 
+   */
+  _userData(event) {
+    this.vendors = event.detail.data;
   }
 }
 

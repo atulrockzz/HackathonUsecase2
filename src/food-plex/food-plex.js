@@ -35,7 +35,7 @@ class FoodPlex extends PolymerElement {
       font-family:"roboto"
     }
     .tabs-bar {
-      background: blueviolet;
+      background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
       width:100%;
       height: auto;
       text-align:center;
@@ -78,8 +78,9 @@ class FoodPlex extends PolymerElement {
   }
   .heading
   {
-    background: rgb(2,0,36);
-background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgba(0,212,255,1) 98%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), 
+    radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+     background-blend-mode: multiply,multiply;color: white;
   }
   </style>
   <app-location id="location" route="{{route}}"></app-location>
@@ -113,8 +114,8 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
          </nav>
       </app-toolbar>
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="error404">
-        <user-home id="home" name="user-home"></user-home>
-        <vendor-home id="home" name="vendor-home"></vendor-home>
+        <user-home id="userHome" name="user-home"></user-home>
+        <vendor-home id="vendorHome" name="vendor-home"></vendor-home>
         <login-form name="login"></login-form>
         <payment-page name="payment"></payment-page>
         <food-order name="order"></food-order>
@@ -145,49 +146,6 @@ background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 0%, rgb
         }
       }
     };
-  }
-  connectedCallback()
-  {
-//Carousal effect
-    super.connectedCallback();
-    var num;
-   var temp=0;
-   var speed=5000; /* this is set for 5 seconds, edit value to suit requirements */
-   var preloads=[];
-/* add any number of images here */
-preload(
-        '../../images/carousal1.jpg',
-        '../../images/carousal2.jpg',
-        '../../images/carousal3.jpg',
-       );
-function preload(){
-for(var c=0;c<arguments.length;c++) {
-   preloads[preloads.length]=new Image();
-   preloads[preloads.length-1].src=arguments[c];
-  }
- }
-
-function rotateImages() {
-   num=Math.floor(Math.random()*preloads.length);
-if(num==temp){
-   rotateImages();
- }
-else{
-   document.body.style.backgroundImage='url('+preloads[num].src+')';
-   temp=num;
-
-setTimeout(function(){rotateImages()},speed);
-  }
- }
-
-if(window.addEventListener){
-   window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
- }
-else { 
-if(window.attachEvent){
-   window.attachEvent('onload',function(){setTimeout(function(){rotateImages()},speed)});
-  }
- }
   }
   /**
   *simple observer which is triggered when page property is changed

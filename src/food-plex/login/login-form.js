@@ -15,14 +15,14 @@ class LoginForm extends PolymerElement {
       <style>
         :host {
           display: block;
-          height:100vh;
+          height:79vh;
           overflow-y:hidden;
           background-size:cover;
           background-image:url(../../../images/login.jpg)
         }
         .form
         {
-          background:white;
+          background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
           width:40%;
           margin:70px auto;
           padding:15px;

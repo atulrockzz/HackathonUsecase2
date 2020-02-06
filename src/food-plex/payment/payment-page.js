@@ -3,6 +3,7 @@ import '@polymer/paper-radio-button/paper-radio-button.js';
 import '@polymer/paper-radio-group/paper-radio-group.js';
 import '../shared/smart-accordian.js';
 import '@polymer/paper-input/paper-input.js';
+import '@polymer/paper-button/paper-button.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '../shared/API/ajax-call.js';
@@ -189,7 +190,7 @@ class PaymentPage extends PolymerElement {
           </div>
   
           <!-- Buttons -->
-          <button type="submit"  on-click="_handleSubmit" class="proceed-btn">Proceed</button>
+          <paper-button type="submit"  on-click="_handleSubmit" raised class="proceed-btn">Proceed</paper-button>
         </div>
       </form>
     </ul>
@@ -197,7 +198,7 @@ class PaymentPage extends PolymerElement {
   <smart-accordion>
     <div slot="summary">UPI ID</div>
     <paper-input label="Enter your upi"><div slot="suffix">@upi</div></paper-input>
-    <button type="submit"  on-click="_handleSubmit" class="upi-btn">Proceed</button>
+    <paper-button type="submit"  on-click="_handleSubmit" raised class="upi-btn">Proceed</paper-button>
   </smart-accordion>
   <smart-accordion>
     <div slot="summary">Wallets</div>
@@ -206,7 +207,7 @@ class PaymentPage extends PolymerElement {
       <paper-radio-button name="PayTM">PayTM</paper-radio-button>
       <paper-radio-button name="GooglePay">GooglePay</paper-radio-button>
   </paper-radio-group>
-  <button type="submit" on-click="_handleSubmit" class="wallet-btn">Proceed</button>
+  <paper-button type="submit" on-click="_handleSubmit" class="wallet-btn" raised>Proceed</paper-button>
   </smart-accordion>
     `;
   }

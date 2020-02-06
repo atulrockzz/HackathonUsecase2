@@ -99,6 +99,13 @@ class FoodOrder extends PolymerElement {
     console.log(event.detail.data)
     this.availableCategories=event.detail.data
   }
+  _handleAdd(){
+    this.quantity+=1;
+  }
+  _handleRemove(){
+    if(this.quantity!=0){
+    this.quantity-=1;
+  }}
 }
 
 window.customElements.define('food-order', FoodOrder);

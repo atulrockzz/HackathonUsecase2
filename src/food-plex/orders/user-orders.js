@@ -18,7 +18,7 @@ class UserOrders extends PolymerElement
             <app-location route={{route}}></app-location>
             <ajax-call id="ajax"></ajax-call>
                 <template is="dom-repeat" items={{myOrders}}>
-                  <paper-card>
+                  <paper-card image=../../images/carousal2.jpg elevation="2" animated-shadow="false">
                   item:{{item.name}}
                   Price:{{item.price}}
                   </paper-card>
@@ -28,7 +28,8 @@ class UserOrders extends PolymerElement
             return {
                 myOrders:{
                     type:Array,
-                    value:[]
+                    value: [{name:"Dosa",price:"50",category:"Salad"},{name:"Dosa",price:"50",category:"Salad"},{name:"Dosa",price:"500",category:"Sandwich"},{name:"Dosa",price:"509",category:"Healthy bites"},{name:"Dosa",price:"50",category:"Soups"}, {name:"Dosa",price:"50",category:"Soups"},{name:"Dosa",price:"50",category:"Soups"}]
+
                   },
             
              }
