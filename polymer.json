@@ -1,53 +1,34 @@
 {
-  "root": "~/HungerBox App/HackathonUsecase2",
+  "npm": true,
   "entrypoint": "index.html",
   "shell": "src/food-plex/food-plex.js",
-  "fragments": [
-    "src/food-plex/home/user-home.js",
-    "src/food-plex/home/vendor-home.js",
-    "src/food-plex/orders/food-order.js",
-    "src/food-plex/login/login-form.js",
-    "src/food-plex/orders/user-orders.js",
-    "src/food-plex/payment/payment-page.js",
-    "src/food-plex/shared/API/ajax-call.js",
-    "src/food-plex/shared/shared-styles.js",
-    "src/food-plex/shared/smart-accordion.js",
-    "src/food-plex/graphs/exporting-dependency.js",
-    "src/food-plex/graphs/high-chart.js",
-    "src/food-plex/error-view.js"
-  ],
   "sources": [
-   "src/**/*",
-   "manifest/**",
-   "data/**/*",
-   "images/**/*",
-   "package.json"
-  ],
-  "extraDependencies": [
+    "src/**/*",
+    "manifest/**",
+    "package.json"
+   ],
+   "extraDependencies": [
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**"
   ],
   "moduleResolution": "node",
-  "npm": true,
   "builds": [
-    { 
-      "name": "es5prod",
+    {
       "preset": "es5-bundled",
       "addServiceWorker": true
     },
-    { 
-      "name": "es6prod",
+    {
       "preset": "es6-unbundled",
       "addServiceWorker": true
     },
-    { 
-      "name": "es6-bundled",
+    {
       "preset": "es6-bundled",
       "addServiceWorker": true
     }
   ],
-  "lint":{
-    "rules":[
+
+  "lint": {
+    "rules": [
       "polymer-3"
     ]
   }
