@@ -41,6 +41,10 @@ class VendorHome extends PolymerElement {
         {
           width:120px;
         }
+        paper-tab
+        {
+          font-size:22px;
+        }
       </style>
       <h2>Hello [[prop1]]!</h2>
       <ajax-call id="ajax"></ajax-call>
@@ -149,7 +153,7 @@ class VendorHome extends PolymerElement {
   {
     let price=this.$.price.value;
     let postObj={price,categoryId:this.categoryId,itemId:this.itemId}
-    this.$.ajax._makeAjaxCall('post',`http://10.117.189.77:8080/foodplex/vendors/${sessionStorage.getItem('vendorId')}/item`,postObj,'')
+    this.$.ajax._makeAjaxCall('post',`http://10.117.189.77:8080/foodplex/vendors/10/item`,postObj,'')
   }
 }
 
