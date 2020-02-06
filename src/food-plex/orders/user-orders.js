@@ -18,9 +18,20 @@ class UserOrders extends PolymerElement
             <app-location route={{route}}></app-location>
             <ajax-call id="ajax"></ajax-call>
                 <template is="dom-repeat" items={{myOrders}}>
-                  <paper-card image=../../images/carousal2.jpg elevation="2" animated-shadow="false">
-                  item:{{item.name}}
-                  Price:{{item.price}}
+                  <paper-card >
+                  <ul>
+                  <li>OrderId:{{item.orderDetailId}}</li>
+                  <li>Price:{{item.totalPrice}}</li>
+                  <li>Date:{{item.orderDate}}</li>
+                  <li>PaymentMode:{{item.paymentMode}}</li>
+                  <li>Status:{{item.status}}</li>
+                  <li>Items:
+                  <template is="dom-repeat" items={{item.orderItems}} as="order">
+                  {{order.vendorItem.item.itemName}},
+                  </template>
+                  </li>
+                  <li>Quantity:{{item.quantity}}</li>
+                  </ul>
                   </paper-card>
                 </template>   `
         }
@@ -41,11 +52,13 @@ class UserOrders extends PolymerElement
   }
   connectedCallback()
   {
+    const userId=sessionStorage.getItem('userId')
     super.connectedCallback();
-    this.$.ajax._makeAjaxCall('get',`http://10.117.189.208:8080/foodplex/1/order`,null,'myOrders')  
+    this.$.ajax._makeAjaxCall('get',`http://10.117.189.208:8080/foodplex/users/${userId}/orders`,null,'myOrders')  
   }
   _gettingOrders(){
-      
+      this.myOrders=event.target.response.orders
+      console.log(this.myOrders)
   }
 }
     customElements.define('user-orders',UserOrders)
